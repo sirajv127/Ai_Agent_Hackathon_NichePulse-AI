@@ -1,0 +1,26 @@
+.dashboard-header {
+    margin-bottom: 2rem;
+}
+
+.dashboard-header h1 {
+    font-size: 2.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.dashboard-header p {
+    font-size: 1.125rem;
+    color: var(--subtle-text);
+}
+
+.error-message {
+    color: #ef4444;
+    background-color: #fee2e2;
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.reports-grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
