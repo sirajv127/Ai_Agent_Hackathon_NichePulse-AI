@@ -9,7 +9,7 @@ from app.database import init_db
 # Define the list of allowed origins
 origins = [
     "http://localhost:3000",
-    "https://nichepulse-frontend-xxxx.onrender.com",  # <-- PASTE YOUR FRONTEND URL HERE
+    "https://ai-agent-hackathon-nichepulse-ai-frontend.onrender.com/",  # <-- PASTE YOUR FRONTEND URL HERE
 ]
 
 @asynccontextmanager
