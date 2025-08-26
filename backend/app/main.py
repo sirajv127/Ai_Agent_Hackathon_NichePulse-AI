@@ -6,6 +6,12 @@ from app.core.config import settings
 from app.services.scheduler import start_background_scheduler
 from app.database import init_db
 
+# Define the allowed origins
+origins = [
+    "http://localhost:3000",
+    "https://<YOUR_RENDER_FRONTEND_URL>",  # Replace this with your actual frontend URL
+]
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Code to run on startup
@@ -23,14 +29,13 @@ app = FastAPI(
 )
 
 # Set up CORS (Cross-Origin Resource Sharing)
-if settings.BACKEND_CORS_ORIGINS:
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(api_router, prefix="/api/v1")
 
