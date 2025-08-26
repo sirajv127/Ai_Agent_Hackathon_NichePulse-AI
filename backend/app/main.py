@@ -6,17 +6,17 @@ from app.core.config import settings
 from app.services.scheduler import start_background_scheduler
 from app.database import init_db
 
-# Define the allowed origins
+# Define the list of allowed origins
 origins = [
     "http://localhost:3000",
-    "https://<YOUR_RENDER_FRONTEND_URL>",  # Replace this with your actual frontend URL
+    "https://nichepulse-frontend-xxxx.onrender.com",  # <-- PASTE YOUR FRONTEND URL HERE
 ]
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     # Code to run on startup
     print("Starting up the application...")
-    init_db()  # Initialize the database and tables
+    init_db()
     start_background_scheduler()
     yield
     # Code to run on shutdown
@@ -28,7 +28,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Set up CORS (Cross-Origin Resource Sharing)
+# Set up the new CORS middleware with the updated origins list
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
